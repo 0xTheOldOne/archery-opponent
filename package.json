@@ -10,6 +10,7 @@
     "deploy": "git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
+    "@vue/composition-api": "^1.4.6",
     "vue": "^2.6.11",
     "vue-i18n": "^8.26.3",
     "vue-i18n-bridge": "^9.2.0-beta.10",
