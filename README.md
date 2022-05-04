@@ -1,4 +1,4 @@
-<h1 align="center">archery-opponent</h1>
+<h1 align="center">🏹 archery-opponent 👤</h1>
 <img align="right" src="https://img.shields.io/github/package-json/v/0xTheOldOne/archery-opponent?style=for-the-badge" />
 
 <h3 >Description</h3>
