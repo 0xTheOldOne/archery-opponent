@@ -1,7 +1,7 @@
 <template>
   <div class="component">
-    <div class="score-container">
-      <div class="score" :val="val"></div>
+    <div class="score m-3" :val="val">
+      {{ val }}
     </div>
   </div>
 </template>
@@ -28,7 +28,6 @@ export default {
     border-radius: 100%;
     border: 1px solid;
     border-color: black;
-    content: attr(val);
     text-align: center;
     line-height: @size;
 
