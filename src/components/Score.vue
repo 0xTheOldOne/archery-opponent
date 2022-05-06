@@ -1,14 +1,11 @@
 <template>
-  <div class="component">
-    <div class="score m-3" :val="val">
-      {{ val }}
-    </div>
+  <div class="score" :val="val">
+    <div class="value" v-if="val > 0">{{ val }}</div>
+    <div class="value" v-else>M</div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-
 export default {
   name: "Score",
   props: {
@@ -18,47 +15,62 @@ export default {
 </script>
 
 <style scoped lang="less">
-.component {
-  @size: 5rem;
+@size: 8rem;
 
-  .score {
-    color: black;
+.score {
+  .value {
     width: @size;
     height: @size;
-    border-radius: 100%;
-    border: 1px solid;
-    border-color: black;
-    text-align: center;
     line-height: @size;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 3rem;
+    border-radius: 100%;
+    border: 0.25rem solid;
+    border-color: black;
+    color: black;
+    position: relative;
+  }
 
-    &[val="0"] {
-      background-color: lightgoldenrodyellow;
+  &[val="0"] {
+    .value {
+      background-color: darkgrey;
     }
+  }
 
-    &[val="1"],
-    &[val="2"] {
+  &[val="1"],
+  &[val="2"] {
+    .value {
       background-color: white;
     }
+  }
 
-    &[val="3"],
-    &[val="4"] {
+  &[val="3"],
+  &[val="4"] {
+    .value {
       color: white;
       background-color: black;
       border-color: white;
     }
+  }
 
-    &[val="5"],
-    &[val="6"] {
+  &[val="5"],
+  &[val="6"] {
+    .value {
       background-color: #009ee1;
     }
+  }
 
-    &[val="7"],
-    &[val="8"] {
+  &[val="7"],
+  &[val="8"] {
+    .value {
       background-color: #e50017;
     }
+  }
 
-    &[val="9"],
-    &[val="10"] {
+  &[val="9"],
+  &[val="10"] {
+    .value {
       background-color: #ffdd00;
     }
   }

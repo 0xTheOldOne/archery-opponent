@@ -59,6 +59,30 @@ export default new Vuex.Store({
 
       console.debug("Retrieving settings from localStorage... DONE");
     },
+    updateShotsPerRound(state, value) {
+      console.debug(value);
+      state.shotsPerRound = value;
+
+      this.commit("resetMatch");
+    },
+    updateMinimumScore(state, value) {
+      console.debug(value);
+      state.minimumScore = value;
+
+      this.commit("resetMatch");
+    },
+    updateMaximumScore(state, value) {
+      console.debug(value);
+      state.maximumScore = value;
+
+      this.commit("resetMatch");
+    },
+    updateMissChances(state, value) {
+      console.debug(value);
+      state.missChances = value;
+
+      this.commit("resetMatch");
+    },
     shootArrow(state) {
       console.debug("Shooting an arrow between " + state.minimumScore + " and " + state.maximumScore + "...");
 
@@ -66,21 +90,37 @@ export default new Vuex.Store({
       var score = Math.floor(Math.random() * state.maximumScore) + state.minimumScore; // https://stackoverflow.com/a/4960020
       var result = miss ? 0 : score;
 
+      if (state.match.length == 0) {
+        state.match.push({
+          index: state.match.length + 1,
+          shots: [],
+        });
+      }
+
       // New round if necessary
       if (state.round.length >= state.shotsPerRound) {
-        state.match.push(state.round);
+        state.match.push({
+          index: state.match.length + 1,
+          shots: [],
+        });
         state.round = [];
       }
 
-      state.round.push({
+      var arrow = {
         index: state.round.length + 1,
         val: result,
-      });
+      };
+
+      state.match[state.match.length - 1].shots.push(arrow);
+      state.round.push(arrow);
 
       console.debug("Shooting an arrow between " + state.minimumScore + " and " + state.maximumScore + "... " + result);
     },
     resetMatch(state) {
-      this.commit("resetLocalStorage");
+      console.debug("Reset the entire match...");
+      state.match = [];
+      state.round = [];
+      console.debug("Reset the entire match... DONE");
     },
   },
   actions: {},
