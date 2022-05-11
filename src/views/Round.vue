@@ -5,14 +5,14 @@
     </div>
     <b-container>
       <b-row>
-        <b-col class="text-center"
-          >👤
+        <b-col class="text-center">
+          👤
           {{
             $t("profiles." + opponent)
               .charAt(0)
               .toUpperCase() + $t("profiles." + opponent).slice(1)
-          }}</b-col
-        >
+          }}
+        </b-col>
       </b-row>
       <b-row>
         <b-col>

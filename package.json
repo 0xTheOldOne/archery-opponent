@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue)\" --locales \"./src/locales/**/*.json\"",
-    "predeploy": "npm run build",
+    "predeploy": "vue-cli-service build",
     "deploy": "git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
