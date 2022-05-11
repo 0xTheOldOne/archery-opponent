@@ -15,6 +15,7 @@
 @import "./style/common.less";
 
 html {
+  .fullcontent();
   color: @font-color;
   background-color: @background-color;
   font-family: "Montserrat", sans-serif;
@@ -23,10 +24,12 @@ html {
   font-size: @font-size;
 
   body {
+    .fullcontent();
     color: inherit;
     background-color: inherit;
 
     #app {
+      .fullcontent();
       position: relative;
       height: 100vh;
       margin: auto;
