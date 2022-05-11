@@ -24,5 +24,10 @@
       "shots": "Shots",
       "total": "Total"
     }
+  },
+  "profiles": {
+    "beginner": "beginner",
+    "advanced": "advanced",
+    "pro": "pro"
   }
 }

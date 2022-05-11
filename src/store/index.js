@@ -12,7 +12,6 @@ const vuexLocal = new VuexPersistence({
     userLocale: state.userLocale,
     shotsPerRound: state.shotsPerRound,
     opponent: state.opponent,
-    opponentGender: state.opponentGender,
     match: state.match,
     round: state.round,
   }),
@@ -23,7 +22,6 @@ export default new Vuex.Store({
     userLocale: "",
     shotsPerRound: 3,
     opponent: "beginner",
-    opponentGender: "male",
     profiles: {
       beginner: [
         { val: 0, percent: 100 },
@@ -112,10 +110,6 @@ export default new Vuex.Store({
       state.opponent = value;
 
       this.commit("resetMatch");
-    },
-    updateOpponentGender(state, value) {
-      console.debug(value);
-      state.opponentGender = value;
     },
     resetMatch(state) {
       console.debug("Reset the entire match...");

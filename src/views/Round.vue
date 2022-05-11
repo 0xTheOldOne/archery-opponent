@@ -5,6 +5,16 @@
     </div>
     <b-container>
       <b-row>
+        <b-col class="text-center"
+          >👤
+          {{
+            $t("profiles." + opponent)
+              .charAt(0)
+              .toUpperCase() + $t("profiles." + opponent).slice(1)
+          }}</b-col
+        >
+      </b-row>
+      <b-row>
         <b-col>
           <div class="current-round">
             <div class="score-container">
@@ -38,6 +48,7 @@ export default {
   computed: {
     ...mapState({
       round: (state) => state.round,
+      opponent: (state) => state.opponent,
     }),
   },
   methods: {

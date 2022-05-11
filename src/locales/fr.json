@@ -24,5 +24,10 @@
       "shots": "Flèches",
       "total": "Total"
     }
+  },
+  "profiles": {
+    "beginner": "débutant",
+    "advanced": "confirmé",
+    "pro": "pro"
   }
 }

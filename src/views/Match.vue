@@ -14,7 +14,7 @@
             </tr>
             <tr v-for="round in match" :key="round.index" class="round">
               <td>#{{ round.index }}</td>
-              <td v-for="shot in sortArray(round.shots)" :key="shot.index" :style="'width: ' + (100 - 20 - 20) / shotsPerRound + '% !important'">
+              <td v-for="shot in sortArray(round.shots)" :key="shot.index" :style="'width: ' + columnWidth + '% !important'">
                 {{ shot.val }}
               </td>
               <td>{{ sumShots(round.shots) }}</td>
@@ -54,10 +54,13 @@ export default {
 
       return sum + " / " + max;
     },
+    columnWidth: function () {
+      return (100 - 20 - 20) / this.shotsPerRound;
+    },
   },
   methods: {
     sortArray(array) {
-      return array.sort(function (a, b) {
+      return array.slice().sort(function (a, b) {
         return b.val - a.val;
       });
     },

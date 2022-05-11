@@ -29,43 +29,6 @@
             <div id="graph"></div>
           </b-col>
         </b-row>
-
-        <!-- <div class="spacer small"></div> -->
-
-        <!-- <b-row>
-          <b-col>
-            <table>
-              <tr>
-                <th style="width: 20% !important">Score</th>
-                <th>Chances of hit</th>
-              </tr>
-              <tr v-for="score in profiles[opponent].slice().reverse()" :key="score.val">
-                <td>{{ score.val }}</td>
-                <td>{{ score.percent }}%</td>
-              </tr>
-            </table>
-          </b-col>
-        </b-row> -->
-
-        <!-- <b-row>
-          <b-col cols="6 text-right">
-            <div class="label">Gender</div>
-          </b-col>
-          <b-col cols="6">
-            <b-form-select v-model="opponentGender" :options="genderOptions"></b-form-select>
-          </b-col>
-        </b-row> -->
-
-        <!-- <b-row>
-          <b-col v-if="this.opponentGender == 'male'">
-            male
-            <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_rtceylyu.json" background="transparent" speed="1" loop autoplay />
-          </b-col>
-          <b-col v-else>
-            female
-            <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_qv8r7s30.json" background="transparent" speed="1" loop autoplay />
-          </b-col>
-        </b-row> -->
       </div>
     </b-container>
   </div>
@@ -134,16 +97,14 @@ export default {
   data() {
     return {
       shotsPerRoundOptions: [1, 3, 6],
-      opponentOptions: ["beginner", "advanced", "pro"],
-      genderOptions: ["male", "female"],
+      opponentOptions: [
+        { value: "beginner", text: this.$t("profiles.beginner") },
+        { value: "advanced", text: this.$t("profiles.advanced") },
+        { value: "pro", text: this.$t("profiles.pro") },
+      ],
     };
   },
   computed: {
-    lottieGender: {
-      get() {
-        return this.gender == "male" ? "https://assets5.lottiefiles.com/packages/lf20_rtceylyu.json" : "https://assets10.lottiefiles.com/packages/lf20_qv8r7s30.json";
-      },
-    },
     profiles: {
       get() {
         return this.$store.state.profiles;
@@ -164,14 +125,6 @@ export default {
       set(value) {
         this.$store.commit("updateOpponent", value);
         this.drawChart();
-      },
-    },
-    opponentGender: {
-      get() {
-        return this.$store.state.opponentGender;
-      },
-      set(value) {
-        this.$store.commit("updateOpponentGender", value);
       },
     },
   },
