@@ -1,31 +1,29 @@
 <template>
   <div>
     <div class="title-bar">
-      <div class="title">📋 Scoreboard</div>
+      <div class="title">{{ $t("pages.match.title") }}</div>
     </div>
-    <b-container>
+    <b-container class="scoreboard">
       <b-row>
         <b-col>
-          <div class="scoreboard">
-            <table>
-              <tr>
-                <th style="width: 20% !important">Round</th>
-                <th :colspan="shotsPerRound">Shots</th>
-                <th style="width: 20% !important">Total</th>
-              </tr>
-              <tr v-for="round in match" :key="round.index" class="round">
-                <td>#{{ round.index }}</td>
-                <td v-for="shot in sortArray(round.shots)" :key="shot.index" :style="'width: ' + (100 - 20 - 20) / shotsPerRound + '% !important'">
-                  {{ shot.val }}
-                </td>
-                <td>{{ sumShots(round.shots) }}</td>
-              </tr>
-              <tr>
-                <td>Total</td>
-                <td :colspan="shotsPerRound + 1">{{ total }}&nbsp;/&nbsp;{{ maximum }}</td>
-              </tr>
-            </table>
-          </div>
+          <table>
+            <tr>
+              <th style="width: 20% !important">{{ $t("pages.match.round") }}</th>
+              <th :colspan="shotsPerRound">{{ $t("pages.match.shots") }}</th>
+              <th style="width: 20% !important">{{ $t("pages.match.total") }}</th>
+            </tr>
+            <tr v-for="round in match" :key="round.index" class="round">
+              <td>#{{ round.index }}</td>
+              <td v-for="shot in sortArray(round.shots)" :key="shot.index" :style="'width: ' + (100 - 20 - 20) / shotsPerRound + '% !important'">
+                {{ shot.val }}
+              </td>
+              <td>{{ sumShots(round.shots) }}</td>
+            </tr>
+            <tr>
+              <td>{{ $t("pages.match.total") }}</td>
+              <td :colspan="shotsPerRound + 1">{{ total }}</td>
+            </tr>
+          </table>
         </b-col>
       </b-row>
     </b-container>
@@ -45,25 +43,16 @@ export default {
     }),
     total: function () {
       let sum = 0;
+      let max = 0;
 
       this.match.forEach((round) => {
         round.shots.forEach((shot) => {
           sum += shot.val;
+          max += 10;
         });
       });
 
-      return sum;
-    },
-    maximum: function () {
-      let sum = 0;
-
-      this.match.forEach((round) => {
-        round.shots.forEach((shot) => {
-          sum += 10;
-        });
-      });
-
-      return sum;
+      return sum + " / " + max;
     },
   },
   methods: {
@@ -86,30 +75,11 @@ export default {
 </script>
 
 <style scoped lang="less">
+@import "../style/common.less";
+
 .scoreboard {
-  table {
-    width: 100%;
-
-    tr {
-      > * {
-        text-align: center;
-        border-bottom: 1px solid #ccc;
-        padding: 0.5rem 0;
-
-        &:first-child {
-          text-align: left;
-          font-weight: bold;
-        }
-
-        &:last-child {
-          text-align: right;
-        }
-      }
-
-      td {
-        font-family: monospace;
-      }
-    }
-  }
+  height: calc(100vh - @nav-height - @title-height - 2 * @title-margin);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 </style>

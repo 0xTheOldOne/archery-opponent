@@ -1,101 +1,28 @@
 {
-  "translation": {
-    "need_help": "Hey, want to help with translations ?",
-    "send_message": "Send me a private message on Twitter"
-  },
-  "menu": {
-    "home": "Calculator",
-    "strongblock": "What is StrongBlock ?",
-    "about": "Concerning the app",
-    "author": "About the author"
-  },
+  "app": "Virtual archer",
   "pages": {
     "home": {
-      "reset_settings": {
-        "button_text": "Reset settings",
-        "toast_title": "Settings restored",
-        "toast_text": "Values were restored to defaults."
-      },
-      "node_settings": {
-        "title": "Nodes settings",
-        "input_price_title": "${token} token price is:",
-        "input_price_description": "This value is fetched from CoinGecko, in {currency} ({symbol}) every {period} {unit}.",
-        "input_walletTokens_title": "Number of ${token} that you have in your wallet:",
-        "input_walletTokens_description": "Here you can set how many tokens you already have in your wallet, so all the calculations will be more accurate for you."
-      },
-      "rewards": {
-        "title": "Periodical rewards"
-      },
-      "projection": {
-        "title": "Rewards projection chart"
-      }
-    }
-  },
-  "components": {
-    "localeswitcher": {
-      "title": "Translation"
-    },
-    "share": {
-      "button": "Share",
-      "text": "I now have ${ticker} {nodeCount} {nodeWord} ! 🥳\nI'm earning {strongDaily} ${ticker} per day (At current price (1 {ticker} = {price} $) it's about {fiatDaily}$ per day, {fiatYearly}$ per year) 🚀\n\nSee your rewards here :"
-    },
-    "coingeckoupdater": {
-      "online": "CoinGecko API is online",
-      "offline": "CoinGecko API is offline"
-    },
-    "gasfees": {
-      "label": "Gas tracker"
-    },
-    "projection_chart": {
-      "create_at_ten": "Create a new node once you reach 10 ${token}",
-      "series": {
-        "node_count": {
-          "name": "Node count",
-          "tooltip": {
-            "header_format": "After {point.key} day(s)<br />",
-            "value_suffix": " node(s)"
-          }
-        },
-        "compound_projection": {
-          "name": "Compound projections"
-        },
-        "fees_projection": {
-          "name": "Fees projections"
-        }
+      "intro_1": "This application allows you to measure yourself against a virtual archer of the desired level of mastery.",
+      "intro_2": "You will be drawing lots for his score for each arrow... Good luck ! 🤞",
+      "menu": {
+        "settings": "Press ⚙️ for settings",
+        "round": "Press 🏹 to shoot",
+        "match": "Press 📋 to see the results"
       }
     },
-    "node_settings": {
-      "input_rewards_title": "Rewards per node, per day:",
-      "input_rewards_description": "This value is fetched from CoinGecko, in {currency} ({symbol}) every {period} {unit}.",
-      "etherum": {
-        "input_rewards_description": "This is a rough estimation of rewards based on an average of 6400 Etherum blocs completed per day. You earn 0.1 ${ticker} per 7000 Etherum blocks completed.",
-        "input_rewards_description_info": "If you want to see the historical number of blocks produced on the Ethereum network and the total block reward, you can download all the values from Etherscan, in a CSV file",
-        "input_rewards_description_link": "here"
-      },
-      "polygon": {
-        "input_rewards_description": "",
-        "input_rewards_description_info": "Rewards calculation is done using a table describing decay, if you want to see some details about this, click",
-        "input_rewards_description_link": "here"
-      },
-      "input_nodeCount_title": "Node count:",
-      "input_nodeCount_description": "The 10 ${ticker} {token} that you need to have in order to create another node will be earned in approximatly {count} {days}, including the {wallet} {token} you already have in your wallet.",
-      "input_nodeCount_description_countReached": "You already have the 10 ${ticker} {token} required tokens to create another node.",
-      "input_nodeCount_description_zeroNode": "Without ${ticker} nodes you can't earn tokens..."
+    "settings": {
+      "title": "⚙️ Settings",
+      "shots_per_round": "Shots per round",
+      "level_of_mastery": "Level of mastery"
+    },
+    "round": {
+      "title": "🏹 Match"
+    },
+    "match": {
+      "title": "📋 Scoreboard",
+      "round": "Round",
+      "shots": "Shots",
+      "total": "Total"
     }
-  },
-  "misc": {
-    "second": "second | second | seconds",
-    "minute": "minute | minute | minutes",
-    "hour": "hour | hour | hours",
-    "day": "day | day | days",
-    "week": "week | week | weeks",
-    "month": "month | month | months",
-    "year": "year | year | years",
-    "daily": "daily",
-    "weekly": "weekly",
-    "monthly": "monthly",
-    "annually": "annually",
-    "token": "token | token | tokens",
-    "node": "node | node | nodes"
   }
 }

@@ -1,0 +1,48 @@
+table {
+  width: 100%;
+}
+table tr > * {
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  padding: 0.5rem 0;
+}
+table tr > *:first-child {
+  text-align: left;
+  font-weight: bold;
+}
+table tr > *:last-child {
+  text-align: right;
+}
+table tr td {
+  font-family: monospace;
+}
+.spacer {
+  height: 2rem;
+}
+.spacer.small {
+  height: 1rem;
+}
+@-webkit-keyframes focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+@keyframes focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}

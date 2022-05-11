@@ -1,101 +1,28 @@
 {
-  "translation": {
-    "need_help": "Hey, tu veux m'aider pour les traductions ?",
-    "send_message": "Envoie moi un message sur Twitter"
-  },
-  "menu": {
-    "home": "Calculateur",
-    "strongblock": "C'est quoi StrongBlock ?",
-    "about": "À-propos",
-    "author": "L'auteur"
-  },
+  "app": "Virtual archer",
   "pages": {
     "home": {
-      "reset_settings": {
-        "button_text": "RAZ paramètres",
-        "toast_title": "RAZ paramètres",
-        "toast_text": "Les paramètres ont été remis à zéro."
-      },
-      "node_settings": {
-        "title": "Paramètres des nodes",
-        "input_price_title": "Le ${token} vaut actuellement :",
-        "input_price_description": "Cette valeur est récupérée depuis CoinGecko, en {currency} ({symbol}) toutes les {period} {unit}.",
-        "input_walletTokens_title": "Le nombre de ${token} que vous avez dans votre wallet :",
-        "input_walletTokens_description": "Ce champ permet d'iindiquer le nombre de tokens déjà acquis/achetés afin de pouvoir ajuster au mieux les projections."
-      },
-      "rewards": {
-        "title": "Gains périodiques"
-      },
-      "projection": {
-        "title": "Graphique prévisionnel de gains"
-      }
-    }
-  },
-  "components": {
-    "localeswitcher": {
-      "title": "Traduction"
-    },
-    "share": {
-      "button": "Partager",
-      "text": "J'ai actuellement {nodeCount} {nodeWord} de ${ticker} ! 🥳\nÇa rapporte {strongDaily} ${ticker} par jour (Au prix actuel (1 {ticker} = {price} $) ça fait environ {fiatDaily}$ par jour, {fiatYearly}$ par an) 🚀\n\nPour avoir un aperçu des gains :"
-    },
-    "coingeckoupdater": {
-      "online": "CoinGecko API est joignable",
-      "offline": "CoinGecko API n'est pas joignable"
-    },
-    "gasfees": {
-      "label": "Gas tracker"
-    },
-    "projection_chart": {
-      "create_at_ten": "Créer un node dès qu'on atteint 10 ${token}",
-      "series": {
-        "node_count": {
-          "name": "Nombre de nodes",
-          "tooltip": {
-            "header_format": "Après {point.key} jour(s)<br />",
-            "value_suffix": " node(s)"
-          }
-        },
-        "compound_projection": {
-          "name": "Gains prévisionnels"
-        },
-        "fees_projection": {
-          "name": "Frais prévisionnels"
-        }
+      "intro_1": "Grâce à cette application vous allez pouvoir vous mesurer à un archer virtuel d'un niveau que vous aurez choisi.",
+      "intro_2": "Le score de chaque flèche est tirée au hasard... Bonne chance ! 🤞",
+      "menu": {
+        "settings": "⚙️ pour accéder aux paramètres",
+        "round": "🏹 pour accéder au match",
+        "match": "📋 pour voir la feuille de match"
       }
     },
-    "node_settings": {
-      "input_rewards_title": "Gains par node, par jour:",
-      "input_rewards_description": "Cette valeur est récupérée depuis CoinGecko, en {currency} ({symbol}) chaque {period} {unit}.",
-      "etherum": {
-        "input_rewards_description": "Estimation brute des gains basée sur une moyenne de 6400 blocs Etherum traités par jour. Un node rapporte 0,1 ${ticker} tous les 7000 blocs Etherum traités.",
-        "input_rewards_description_info": "Pour consulter l'historique du nombre de blocs produits sur le réseau Etherum et le total des gains pour ces blocs, il suffit de télécharger ces valeurs depuis Etherscan, disponibles dans un fichier CSV",
-        "input_rewards_description_link": "ici"
-      },
-      "polygon": {
-        "input_rewards_description": "",
-        "input_rewards_description_info": "Le calcul des gains se base sur un tableau décrivant la diminution progressive de ces derniers, si vous voulez du détail, cliquez ",
-        "input_rewards_description_link": "ici"
-      },
-      "input_nodeCount_title": "Nombre de nodes :",
-      "input_nodeCount_description": "Les 10 {token} ${ticker} que vous devez posséder pour créer un nouveau node auront été gagnés dans approximativement {count} {days}, en tenant compte des {wallet} {token} que vous avez déjà dans votre wallet.",
-      "input_nodeCount_description_countReached": "Vous avez déjà les 10 ${ticker} {token} nécessaires pour créer un nouveau node.",
-      "input_nodeCount_description_zeroNode": "Sans node de ${ticker} vous ne pouvez pas gagner de tokens..."
+    "settings": {
+      "title": "⚙️ Paramètres",
+      "shots_per_round": "Nombre de flèches par volée",
+      "level_of_mastery": "Niveau d'expertise"
+    },
+    "round": {
+      "title": "🏹 Match"
+    },
+    "match": {
+      "title": "📋 Scores",
+      "round": "Volée",
+      "shots": "Flèches",
+      "total": "Total"
     }
-  },
-  "misc": {
-    "second": "seconde | seconde | secondes",
-    "minute": "minute | minute | minutes",
-    "hour": "heure | heure | heures",
-    "day": "jour | jour | jours",
-    "week": "semaine | semaine | semaines",
-    "month": "mois | mois | mois",
-    "year": "année | année | années",
-    "daily": "par jour",
-    "weekly": "par semaine",
-    "monthly": "par mois",
-    "annually": "par an",
-    "token": "token | token | tokens",
-    "node": "node | node | nodes"
   }
 }

@@ -11,9 +11,8 @@ const vuexLocal = new VuexPersistence({
   reducer: (state) => ({
     userLocale: state.userLocale,
     shotsPerRound: state.shotsPerRound,
-    minimumScore: state.minimumScore,
-    maximumScore: state.maximumScore,
-    missChances: state.missChances,
+    opponent: state.opponent,
+    opponentGender: state.opponentGender,
     match: state.match,
     round: state.round,
   }),
@@ -23,9 +22,49 @@ export default new Vuex.Store({
   state: {
     userLocale: "",
     shotsPerRound: 3,
-    minimumScore: 1,
-    maximumScore: 10,
-    missChances: 5,
+    opponent: "beginner",
+    opponentGender: "male",
+    profiles: {
+      beginner: [
+        { val: 0, percent: 100 },
+        { val: 1, percent: 95 },
+        { val: 2, percent: 90 },
+        { val: 3, percent: 85 },
+        { val: 4, percent: 80 },
+        { val: 5, percent: 75 },
+        { val: 6, percent: 65 },
+        { val: 7, percent: 60 },
+        { val: 8, percent: 30 },
+        { val: 9, percent: 20 },
+        { val: 10, percent: 10 },
+      ],
+      advanced: [
+        { val: 0, percent: 100 },
+        { val: 1, percent: 100 },
+        { val: 2, percent: 100 },
+        { val: 3, percent: 100 },
+        { val: 4, percent: 100 },
+        { val: 5, percent: 90 },
+        { val: 6, percent: 85 },
+        { val: 7, percent: 80 },
+        { val: 8, percent: 75 },
+        { val: 9, percent: 70 },
+        { val: 10, percent: 50 },
+      ],
+      pro: [
+        { val: 0, percent: 100 },
+        { val: 1, percent: 100 },
+        { val: 2, percent: 100 },
+        { val: 3, percent: 100 },
+        { val: 4, percent: 100 },
+        { val: 5, percent: 100 },
+        { val: 6, percent: 100 },
+        { val: 7, percent: 100 },
+        { val: 8, percent: 100 },
+        { val: 9, percent: 90 },
+        { val: 10, percent: 80 },
+      ],
+    },
     match: [],
     round: [],
   },
@@ -38,9 +77,8 @@ export default new Vuex.Store({
 
       // Default values
       state.shotsPerRound = 3;
-      state.minimumScore = 1;
-      state.maximumScore = 10;
-      state.missChances = 5;
+      state.opponent = "beginner";
+      state.opponentGender = "male";
       state.match = [];
       state.round = [];
 
@@ -59,36 +97,60 @@ export default new Vuex.Store({
 
       console.debug("Retrieving settings from localStorage... DONE");
     },
+    setUserLocale(state, payload) {
+      console.debug(payload);
+      state.userLocale = payload.locale;
+    },
     updateShotsPerRound(state, value) {
       console.debug(value);
-      state.shotsPerRound = value;
+      state.shotsPerRound = parseInt(value);
 
       this.commit("resetMatch");
     },
-    updateMinimumScore(state, value) {
+    updateOpponent(state, value) {
       console.debug(value);
-      state.minimumScore = value;
+      state.opponent = value;
 
       this.commit("resetMatch");
     },
-    updateMaximumScore(state, value) {
+    updateOpponentGender(state, value) {
       console.debug(value);
-      state.maximumScore = value;
-
-      this.commit("resetMatch");
+      state.opponentGender = value;
     },
-    updateMissChances(state, value) {
-      console.debug(value);
-      state.missChances = value;
-
-      this.commit("resetMatch");
+    resetMatch(state) {
+      console.debug("Reset the entire match...");
+      state.match = [];
+      state.round = [];
+      console.debug("Reset the entire match... DONE");
     },
     shootArrow(state) {
-      console.debug("Shooting an arrow between " + state.minimumScore + " and " + state.maximumScore + "...");
+      console.debug("Shooting an arrow...");
 
-      var miss = Math.random() < state.missChances / 100; // https://stackoverflow.com/a/11552190
-      var score = Math.floor(Math.random() * state.maximumScore) + state.minimumScore; // https://stackoverflow.com/a/4960020
-      var result = miss ? 0 : score;
+      var result = 0;
+      var miss = true;
+
+      var mastery = state.profiles[state.opponent].slice().reverse();
+      mastery.forEach((score) => {
+        // if didn't already hit, randomize
+        if (miss) {
+          console.debug("Shooting an arrow... " + score.val + " has a " + score.percent + "% chance of hit...");
+
+          // if 100% chances of hit, no random
+          if (score.percent == 100) {
+            result = score.val;
+            miss = false;
+          }
+
+          miss = Math.random() > score.percent / 100;
+
+          // if hit, store score
+          if (!miss) {
+            result = score.val;
+          }
+
+          console.debug("Shooting an arrow... " + score.val + " has a " + score.percent + "% chance of hit... " + miss ? "MISS" : "HIT !");
+        }
+      });
 
       if (state.match.length == 0) {
         state.match.push({
@@ -114,13 +176,7 @@ export default new Vuex.Store({
       state.match[state.match.length - 1].shots.push(arrow);
       state.round.push(arrow);
 
-      console.debug("Shooting an arrow between " + state.minimumScore + " and " + state.maximumScore + "... " + result);
-    },
-    resetMatch(state) {
-      console.debug("Reset the entire match...");
-      state.match = [];
-      state.round = [];
-      console.debug("Reset the entire match... DONE");
+      console.debug("Shooting an arrow... " + result);
     },
   },
   actions: {},

@@ -12,13 +12,7 @@
 </template>
 
 <style lang="less">
-@font-size: 14px;
-@font-color: white;
-@background-color: #263238;
-@accent-color: #455a64;
-@light-color: #78909c;
-@nav-height: 6rem;
-@bootstrap-padding: 15px;
+@import "./style/common.less";
 
 html {
   color: @font-color;
@@ -38,22 +32,28 @@ html {
       margin: auto;
 
       #wrapper {
-        height: 100vh - @nav-height;
+        height: calc(100vh - @nav-height);
 
         .title-bar {
           .gradient(@accent-color, @light-color);
-          margin-bottom: 2rem;
+          margin-bottom: @title-margin;
 
           .title {
             padding-left: 1.5rem;
             font-size: 3rem;
-            line-height: @nav-height;
+            line-height: @title-height;
             text-shadow: 0px 2px 1px @background-color;
           }
         }
 
         h1 {
           font-size: 4rem;
+        }
+
+        .card {
+          * {
+            color: @background-color;
+          }
         }
       }
 
@@ -80,11 +80,5 @@ html {
       }
     }
   }
-}
-
-.gradient(@from, @to) {
-  background: @from;
-  background: linear-gradient(180deg, @from 0%, @to 100%);
-  box-shadow: 0px 1px 1px @from, 0px -1px 1px @to;
 }
 </style>

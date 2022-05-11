@@ -1,7 +1,6 @@
 const supportedLocales = {
   en: "English",
   fr: "Français",
-  es: "Español",
 };
 
 export function getSupportedLocales() {

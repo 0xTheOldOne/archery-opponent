@@ -1,17 +1,27 @@
 <template>
   <div>
     <div class="title-bar">
-      <div class="title">🏹 Match</div>
+      <div class="title">{{ $t("pages.round.title") }}</div>
     </div>
-    <div class="current-round">
-      <div class="score-container">
-        <Score v-for="shot in round" :key="shot.index" :val="shot.val" />
-      </div>
-    </div>
-    <div class="buttons">
-      <b-button variant="success" class="ml-3 mr-3" @click="shoot">🎲</b-button>
-      <b-button variant="danger" class="ml-3 mr-3" @click="reset">🧺</b-button>
-    </div>
+    <b-container>
+      <b-row>
+        <b-col>
+          <div class="current-round">
+            <div class="score-container">
+              <Score v-for="shot in round" :key="shot.index" :val="shot.val" />
+            </div>
+          </div>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>
+          <div class="buttons">
+            <b-button variant="success" class="ml-3 mr-3" @click="shoot">🎲</b-button>
+            <b-button variant="danger" class="ml-3 mr-3" @click="reset">🧺</b-button>
+          </div>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -27,12 +37,7 @@ export default {
   },
   computed: {
     ...mapState({
-      shotsPerRound: (state) => state.shotsPerRound,
-      minimumScore: (state) => state.minimumScore,
-      maximumScore: (state) => state.maximumScore,
-      missChances: (state) => state.missChances,
       round: (state) => state.round,
-      match: (state) => state.match,
     }),
   },
   methods: {
@@ -51,7 +56,9 @@ export default {
 </script>
 
 <style scoped lang="less">
-@buttons-height: 5rem;
+@import "../style/common.less";
+
+@buttons-height: @nav-height;
 
 .buttons {
   height: @buttons-height;
@@ -65,13 +72,16 @@ export default {
 }
 
 .current-round {
+  height: calc(100vh - @nav-height - @title-height - @buttons-height - 2 * @title-margin);
+  overflow-y: auto;
+  overflow-x: hidden;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 56vh;
 
   .score-container {
-    width: 100%;
+    width: 90%;
     .score {
       width: 33%;
       float: left;

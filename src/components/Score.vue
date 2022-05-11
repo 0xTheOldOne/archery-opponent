@@ -9,22 +9,22 @@
 export default {
   name: "Score",
   props: {
-    val: Number,
+    val: 0,
   },
 };
 </script>
 
 <style scoped lang="less">
-@size: 8rem;
+@size: 6rem;
 
 .score {
   .value {
     width: @size;
     height: @size;
-    line-height: @size;
+    line-height: @size - 0.25rem;
     margin: 0 auto;
     text-align: center;
-    font-size: 3rem;
+    font-size: @size / 2.5;
     border-radius: 100%;
     border: 0.25rem solid;
     border-color: black;
