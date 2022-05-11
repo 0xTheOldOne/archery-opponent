@@ -1,5 +1,5 @@
 {
-  "app": "Virtual archer",
+  "app": "Archery opponent",
   "pages": {
     "home": {
       "intro_1": "This application allows you to measure yourself against a virtual archer of the desired level of mastery.",

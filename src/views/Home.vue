@@ -1,14 +1,16 @@
 <template>
   <b-container class="home-container">
     <b-row>
-      <b-col class="content">
+      <b-col>
         <h1 class="mb-5">{{ $t("app") }}</h1>
-        <p>{{ $t("pages.home.intro_1") }}</p>
-        <p>{{ $t("pages.home.intro_2") }}</p>
-        <div class="spacer"></div>
-        <p>{{ $t("pages.home.menu.settings") }}</p>
-        <p>{{ $t("pages.home.menu.round") }}</p>
-        <p>{{ $t("pages.home.menu.match") }}</p>
+        <div class="content">
+          <p>{{ $t("pages.home.intro_1") }}</p>
+          <p>{{ $t("pages.home.intro_2") }}</p>
+          <div class="spacer"></div>
+          <p>{{ $t("pages.home.menu.settings") }}</p>
+          <p>{{ $t("pages.home.menu.round") }}</p>
+          <p>{{ $t("pages.home.menu.match") }}</p>
+        </div>
         <div class="spacer"></div>
         <div class="locales">
           <div class="locale" v-for="locale in locales" :key="locale.code" @click="setLocale(locale.code)">
