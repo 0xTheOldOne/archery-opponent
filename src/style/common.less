@@ -55,7 +55,7 @@ table {
   box-shadow: 0px 1px 1px @from, 0px -1px 1px @to;
 }
 
-.apply-focus-in(@n, @i: 1, @duration: 1s, @delay: 0.5s, @delay-offset: 0.5) when (@i =< @n) {
+.apply-focus-in(@n, @i: 1, @duration: .5s, @delay: 0.5s, @delay-offset: 0.5) when (@i =< @n) {
   &:nth-child(@{i}) {
     .focus-in(@duration, @delay + (@i * @delay-offset));
   }
@@ -63,7 +63,7 @@ table {
   .apply-focus-in(@n, (@i + 1));
 }
 
-.focus-in(@duration: 1s, @delay: 0s) {
+.focus-in(@duration, @delay) {
   -webkit-animation: focus-in @duration cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
   animation: focus-in @duration cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
   animation-delay: @delay;

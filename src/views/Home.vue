@@ -7,20 +7,20 @@
           <p>{{ $t("pages.home.intro_1") }}</p>
           <p>{{ $t("pages.home.intro_2") }}</p>
           <div class="spacer"></div>
-          <p>
-            {{ $t("pages.home.intro_3") }}
-            <b-navbar-toggle target="nav-collapse" class="ml-2">
-              <template #default="{ expanded }">
-                <b-icon v-if="expanded" icon="chevron-up"></b-icon>
-                <b-icon v-else icon="list"></b-icon>
-              </template>
-            </b-navbar-toggle>
-          </p>
-          <div class="spacer"></div>
           <p>{{ $t("pages.home.menu.settings") }}</p>
           <p>{{ $t("pages.home.menu.round") }}</p>
           <p>{{ $t("pages.home.menu.match") }}</p>
         </div>
+        <div class="spacer"></div>
+        <p>
+          {{ $t("pages.home.intro_3") }}
+          <b-navbar-toggle target="nav-collapse" class="ml-2">
+            <template #default="{ expanded }">
+              <b-icon v-if="expanded" icon="chevron-up"></b-icon>
+              <b-icon v-else icon="list"></b-icon>
+            </template>
+          </b-navbar-toggle>
+        </p>
         <div class="spacer"></div>
         <div class="locales">
           <div class="locale" v-for="locale in locales" :key="locale.code" @click="setLocale(locale.code)">
@@ -104,6 +104,7 @@ export default {
       img {
         width: 3rem;
         height: 3rem;
+        margin-bottom: 0.5rem;
       }
     }
   }
