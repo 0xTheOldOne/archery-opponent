@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue)\" --locales \"./src/locales/**/*.json\"",
-    "deploy": "git subtree push --prefix dist origin gh-pages"
+    "deploy": "func() { npm run build && git add . && git commit -m \"BUILD - $1\" && git push main && git subtree push --prefix dist origin gh-pages; }; func"
   },
   "dependencies": {
     "@vue/composition-api": "^1.4.6",
