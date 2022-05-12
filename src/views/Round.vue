@@ -33,9 +33,9 @@
     <b-row>
       <b-col>
         <div class="buttons">
-          <b-button variant="success" class="ml-3 mr-3" @click="shoot">🎲</b-button>
-          <b-button variant="secondary" class="ml-3 mr-3"><router-link to="/scoreboard">📋</router-link></b-button>
-          <b-button variant="danger" class="ml-3 mr-3" @click="reset">🗑️</b-button>
+          <b-button variant="success" class="ml-2 mr-2" @click="shoot">🎲</b-button>
+          <b-button variant="secondary" class="ml-2 mr-2"><router-link to="/scoreboard">📋</router-link></b-button>
+          <b-button variant="danger" class="ml-2 mr-2" @click="reset">🗑️</b-button>
         </div>
       </b-col>
     </b-row>
@@ -93,7 +93,7 @@ export default {
   .btn {
     font-size: 3rem;
     line-height: 4rem;
-    width: 8rem;
+    width: 6rem;
     border: 0.25rem solid black;
   }
 }
