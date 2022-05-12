@@ -10,10 +10,10 @@
           </tr>
           <tr v-for="round in match" :key="round.index" class="round">
             <td>#{{ round.index }}</td>
-            <td v-for="shot in sortArray(round.shots)" :key="shot.index" :style="'width: ' + columnWidth + '% !important'">
+            <td v-for="shot in sortArray(round.shots)" :key="shot.index" :style="'width: ' + columnWidth + '% !important; text-align:center !important;'">
               {{ shot.val }}
             </td>
-            <td>{{ sumShots(round.shots) }}</td>
+            <td v-if="round.shots.length == shotsPerRound">{{ sumShots(round.shots) }}</td>
           </tr>
           <tr>
             <td>{{ $t("pages.match.total") }}</td>
