@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <b-navbar toggleable="lg" type="dark" variant="info" id="nav">
+    <b-navbar toggleable type="dark" variant="info" id="nav">
       <b-navbar-brand href="#" v-if="$route.name.toString().toLowerCase() == 'home'">
         {{ $t("app") }}
       </b-navbar-brand>
