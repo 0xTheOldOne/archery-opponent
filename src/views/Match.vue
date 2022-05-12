@@ -1,33 +1,28 @@
 <template>
-  <div>
-    <div class="title-bar">
-      <div class="title">{{ $t("pages.match.title") }}</div>
-    </div>
-    <b-container class="scoreboard">
-      <b-row>
-        <b-col>
-          <table>
-            <tr>
-              <th style="width: 20% !important">{{ $t("pages.match.round") }}</th>
-              <th :colspan="shotsPerRound">{{ $t("pages.match.shots") }}</th>
-              <th style="width: 20% !important">{{ $t("pages.match.total") }}</th>
-            </tr>
-            <tr v-for="round in match" :key="round.index" class="round">
-              <td>#{{ round.index }}</td>
-              <td v-for="shot in sortArray(round.shots)" :key="shot.index" :style="'width: ' + columnWidth + '% !important'">
-                {{ shot.val }}
-              </td>
-              <td>{{ sumShots(round.shots) }}</td>
-            </tr>
-            <tr>
-              <td>{{ $t("pages.match.total") }}</td>
-              <td :colspan="shotsPerRound + 1">{{ total }}</td>
-            </tr>
-          </table>
-        </b-col>
-      </b-row>
-    </b-container>
-  </div>
+  <b-container class="scoreboard">
+    <b-row>
+      <b-col>
+        <table>
+          <tr>
+            <th style="width: 20% !important">{{ $t("pages.match.round") }}</th>
+            <th :colspan="shotsPerRound">{{ $t("pages.match.shots") }}</th>
+            <th style="width: 20% !important">{{ $t("pages.match.total") }}</th>
+          </tr>
+          <tr v-for="round in match" :key="round.index" class="round">
+            <td>#{{ round.index }}</td>
+            <td v-for="shot in sortArray(round.shots)" :key="shot.index" :style="'width: ' + columnWidth + '% !important'">
+              {{ shot.val }}
+            </td>
+            <td>{{ sumShots(round.shots) }}</td>
+          </tr>
+          <tr>
+            <td>{{ $t("pages.match.total") }}</td>
+            <td :colspan="shotsPerRound + 1">{{ total }}</td>
+          </tr>
+        </table>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
@@ -81,7 +76,7 @@ export default {
 @import "../style/common.less";
 
 .scoreboard {
-  height: calc(100vh - @nav-height - @title-height - 2 * @title-margin);
+  height: calc(100% - @nav-height - @title-height);
   overflow-y: auto;
   overflow-x: hidden;
 }

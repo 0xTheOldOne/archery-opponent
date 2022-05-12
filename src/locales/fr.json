@@ -2,8 +2,10 @@
   "app": "Virtual archer",
   "pages": {
     "home": {
+      "title": "🏠 Accueuil",
       "intro_1": "Grâce à cette application vous allez pouvoir vous mesurer à un archer virtuel d'un niveau que vous aurez choisi.",
       "intro_2": "Le score de chaque flèche est tirée au hasard... Bonne chance ! 🤞",
+      "intro_3": "Pour afficher le menu, appuyez sur",
       "menu": {
         "settings": "⚙️ pour accéder aux paramètres",
         "round": "🏹 pour accéder au match",
@@ -16,7 +18,8 @@
       "level_of_mastery": "Niveau d'expertise"
     },
     "round": {
-      "title": "🏹 Match"
+      "title": "🏹 Match",
+      "shot": "volée"
     },
     "match": {
       "title": "📋 Scores",

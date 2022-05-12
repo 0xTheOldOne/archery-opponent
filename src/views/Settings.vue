@@ -1,37 +1,32 @@
 <template>
-  <div>
-    <div class="title-bar">
-      <div class="title">{{ $t("pages.settings.title") }}</div>
+  <b-container>
+    <div class="settings">
+      <b-row>
+        <b-col cols="5 text-right">
+          <div class="label">{{ $t("pages.settings.shots_per_round") }}</div>
+        </b-col>
+        <b-col cols="7">
+          <b-form-select v-model="shotsPerRound" :options="shotsPerRoundOptions"></b-form-select>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col cols="5 text-right">
+          <div class="label">{{ $t("pages.settings.level_of_mastery") }}</div>
+        </b-col>
+        <b-col cols="7">
+          <b-form-select v-model="opponent" :options="opponentOptions"></b-form-select>
+        </b-col>
+      </b-row>
+
+      <div class="spacer small"></div>
+
+      <b-row>
+        <b-col>
+          <div id="graph"></div>
+        </b-col>
+      </b-row>
     </div>
-    <b-container>
-      <div class="settings">
-        <b-row>
-          <b-col cols="5 text-right">
-            <div class="label">{{ $t("pages.settings.shots_per_round") }}</div>
-          </b-col>
-          <b-col cols="7">
-            <b-form-select v-model="shotsPerRound" :options="shotsPerRoundOptions"></b-form-select>
-          </b-col>
-        </b-row>
-        <b-row>
-          <b-col cols="5 text-right">
-            <div class="label">{{ $t("pages.settings.level_of_mastery") }}</div>
-          </b-col>
-          <b-col cols="7">
-            <b-form-select v-model="opponent" :options="opponentOptions"></b-form-select>
-          </b-col>
-        </b-row>
-
-        <div class="spacer small"></div>
-
-        <b-row>
-          <b-col>
-            <div id="graph"></div>
-          </b-col>
-        </b-row>
-      </div>
-    </b-container>
-  </div>
+  </b-container>
 </template>
 
 <script>

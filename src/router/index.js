@@ -10,22 +10,22 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Home",
+    name: "home",
     component: Home,
   },
   {
     path: "/settings",
-    name: "Settings",
+    name: "settings",
     component: Settings,
   },
   {
     path: "/shoot",
-    name: "Shooting",
+    name: "round",
     component: Round,
   },
   {
     path: "/scoreboard",
-    name: "Scoreboard",
+    name: "match",
     component: Match,
   },
   // {

@@ -2,8 +2,10 @@
   "app": "Archery opponent",
   "pages": {
     "home": {
+      "title": "🏠 Home",
       "intro_1": "This application allows you to measure yourself against a virtual archer of the desired level of mastery.",
       "intro_2": "You will be drawing lots for his score for each arrow... Good luck ! 🤞",
+      "intro_3": "For the menu, press on",
       "menu": {
         "settings": "Press ⚙️ for settings",
         "round": "Press 🏹 to shoot",
@@ -16,7 +18,8 @@
       "level_of_mastery": "Level of mastery"
     },
     "round": {
-      "title": "🏹 Match"
+      "title": "🏹 Match",
+      "shot": "round"
     },
     "match": {
       "title": "📋 Scoreboard",

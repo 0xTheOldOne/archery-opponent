@@ -1,13 +1,39 @@
 <template>
   <div id="app">
-    <router-view id="wrapper" />
+    <b-navbar toggleable="lg" type="dark" variant="info" id="nav">
+      <b-navbar-brand href="#" v-if="$route.name.toString().toLowerCase() == 'home'">
+        {{ $t("app") }}
+      </b-navbar-brand>
+      <b-navbar-brand href="#" v-else>
+        {{ $t("pages." + $route.name.toString().toLowerCase() + ".title") }}
+      </b-navbar-brand>
 
-    <div id="nav">
-      <router-link to="/">🏠</router-link>
-      <router-link to="/settings">⚙️</router-link>
-      <router-link to="/shoot">🏹</router-link>
-      <router-link to="/scoreboard">📋</router-link>
-    </div>
+      <b-navbar-toggle target="nav-collapse" class="ml-auto">
+        <template #default="{ expanded }">
+          <b-icon v-if="expanded" icon="chevron-up"></b-icon>
+          <b-icon v-else icon="list"></b-icon>
+        </template>
+      </b-navbar-toggle>
+
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav>
+          <b-nav-item href="#">
+            <router-link to="/">{{ $t("pages.home.title") }}</router-link>
+          </b-nav-item>
+          <b-nav-item href="#">
+            <router-link to="/settings">{{ $t("pages.settings.title") }}</router-link>
+          </b-nav-item>
+          <b-nav-item href="#">
+            <router-link to="/shoot">{{ $t("pages.round.title") }}</router-link>
+          </b-nav-item>
+          <b-nav-item href="#">
+            <router-link to="/scoreboard">{{ $t("pages.match.title") }}</router-link>
+          </b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
+
+    <router-view id="wrapper" />
   </div>
 </template>
 
@@ -35,7 +61,7 @@ html {
       margin: auto;
 
       #wrapper {
-        height: calc(100vh - @nav-height);
+        height: calc(100vh - @nav-height - @title-margin);
 
         .title-bar {
           .gradient(@accent-color, @light-color);
@@ -62,23 +88,36 @@ html {
 
       #nav {
         .gradient(@light-color, @accent-color);
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
         height: @nav-height;
+        padding: 0px 1rem;
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-bottom: @title-margin;
 
-        a {
-          color: @font-color;
-          text-decoration: none;
+        .navbar-brand {
           font-size: 3rem;
           height: @nav-height;
           line-height: @nav-height;
-          text-shadow: 0px 1px #333;
           padding: 0px 1rem;
+        }
+
+        .navbar-toggler {
+          .gradient(@accent-color, @light-color);
+        }
+
+        .navbar-collapse {
+          background-color: @accent-color;
+          border: 1px solid @light-color;
+          border-top: 0px;
+          z-index: 500;
+          padding: 0.5rem 1rem;
+        }
+
+        * {
+          color: @font-color;
+          text-decoration: none;
+          text-shadow: 0px 1px #333;
         }
       }
     }

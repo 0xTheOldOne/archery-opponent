@@ -2,10 +2,20 @@
   <b-container class="home-container">
     <b-row>
       <b-col>
-        <h1 class="mb-5">{{ $t("app") }}</h1>
+        <!-- <h1 class="mb-5">{{ $t("app") }}</h1> -->
         <div class="content">
           <p>{{ $t("pages.home.intro_1") }}</p>
           <p>{{ $t("pages.home.intro_2") }}</p>
+          <div class="spacer"></div>
+          <p>
+            {{ $t("pages.home.intro_3") }}
+            <b-navbar-toggle target="nav-collapse" class="ml-2">
+              <template #default="{ expanded }">
+                <b-icon v-if="expanded" icon="chevron-up"></b-icon>
+                <b-icon v-else icon="list"></b-icon>
+              </template>
+            </b-navbar-toggle>
+          </p>
           <div class="spacer"></div>
           <p>{{ $t("pages.home.menu.settings") }}</p>
           <p>{{ $t("pages.home.menu.round") }}</p>
@@ -75,7 +85,11 @@ export default {
   align-items: flex-start;
   justify-content: center;
   text-align: center;
-  padding-top: @title-height;
+
+  .navbar-toggler {
+    .gradient(@accent-color, @light-color);
+    color: white;
+  }
 
   p {
     margin-bottom: 0.5rem;

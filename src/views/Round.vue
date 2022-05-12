@@ -1,38 +1,44 @@
 <template>
-  <div>
-    <div class="title-bar">
-      <div class="title">{{ $t("pages.round.title") }}</div>
-    </div>
-    <b-container>
-      <b-row>
-        <b-col class="text-center">
+  <b-container>
+    <b-row>
+      <b-col class="text-center">
+        <h2 v-if="match.length > 0">
           👤
           {{
-            $t("profiles." + opponent)
+            this.$t("profiles." + this.opponent)
               .charAt(0)
-              .toUpperCase() + $t("profiles." + opponent).slice(1)
+              .toUpperCase() + this.$t("profiles." + this.opponent).slice(1)
           }}
-        </b-col>
-      </b-row>
-      <b-row>
-        <b-col>
-          <div class="current-round">
-            <div class="score-container">
-              <Score v-for="shot in round" :key="shot.index" :val="shot.val" />
-            </div>
+          - {{ this.$t("pages.round.shot").charAt(0).toUpperCase() + this.$t("pages.round.shot").slice(1) }} #{{ match.length }}
+        </h2>
+        <h2 v-else>
+          👤
+          {{
+            this.$t("profiles." + this.opponent)
+              .charAt(0)
+              .toUpperCase() + this.$t("profiles." + this.opponent).slice(1)
+          }}
+        </h2>
+      </b-col>
+    </b-row>
+    <b-row>
+      <b-col>
+        <div class="current-round">
+          <div class="score-container">
+            <Score v-for="shot in round" :key="shot.index" :val="shot.val" />
           </div>
-        </b-col>
-      </b-row>
-      <b-row>
-        <b-col>
-          <div class="buttons">
-            <b-button variant="secondary" class="ml-3 mr-3" @click="shoot">🎲</b-button>
-            <b-button variant="secondary" class="ml-3 mr-3" @click="reset">🗑️</b-button>
-          </div>
-        </b-col>
-      </b-row>
-    </b-container>
-  </div>
+        </div>
+      </b-col>
+    </b-row>
+    <b-row>
+      <b-col>
+        <div class="buttons">
+          <b-button variant="secondary" class="ml-3 mr-3" @click="shoot">🎲</b-button>
+          <b-button variant="secondary" class="ml-3 mr-3" @click="reset">🗑️</b-button>
+        </div>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
@@ -47,9 +53,17 @@ export default {
   },
   computed: {
     ...mapState({
+      match: (state) => state.match,
       round: (state) => state.round,
       opponent: (state) => state.opponent,
     }),
+    mastery: function () {
+      return (
+        this.$t("profiles." + this.opponent)
+          .charAt(0)
+          .toUpperCase() + this.$t("profiles." + this.opponent).slice(1)
+      );
+    },
   },
   methods: {
     shoot: function () {
